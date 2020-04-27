@@ -27,7 +27,7 @@ install(FILES "${PROJECT_BINARY_DIR}/tclap/TCLAPConfig.h"
   DESTINATION include/tclap
   )
 install(EXPORT tclapTargets DESTINATION lib/cmake/tclap FILE tclapTargets.cmake)
-install(CMakePackageConfigHelpers)
+include(CMakePackageConfigHelpers)
 write_basic_package_version_file(tclapConfigVersion.cmake
         VERSION ${PROJECT_VERSION}
         COMPATIBILITY SameMajorVersion)
