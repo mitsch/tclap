@@ -21,7 +21,7 @@ configure_file(config.h.in tclap/TCLAPConfig.h)
 add_library(TCLAP INTERFACE)
 target_include_directories(TCLAP INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:$include>)
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 install(TARGETS TCLAP EXPORT tclapTargets DESTINATION include)
 install(FILES "${PROJECT_BINARY_DIR}/tclap/TCLAPConfig.h"
   DESTINATION include/tclap
