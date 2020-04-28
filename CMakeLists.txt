@@ -19,18 +19,26 @@ int main() { std::istringstream iss; }" TCLAP_HAVE_SSTREAM)
 configure_file(config.h.in tclap/TCLAPConfig.h)
 
 add_library(TCLAP INTERFACE)
+
 target_include_directories(TCLAP INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-install(TARGETS TCLAP EXPORT tclapTargets DESTINATION include)
+
+install(TARGETS TCLAP
+        EXPORT tclapTargets
+        DESTINATION include)
+
 install(FILES "${PROJECT_BINARY_DIR}/tclap/TCLAPConfig.h"
-  DESTINATION include/tclap
-  )
+        DESTINATION include/tclap)
+
 install(EXPORT tclapTargets DESTINATION lib/cmake/tclap FILE tclapTargets.cmake)
+
 include(CMakePackageConfigHelpers)
+
 write_basic_package_version_file(tclapConfigVersion.cmake
         VERSION ${PROJECT_VERSION}
         COMPATIBILITY SameMajorVersion)
+
 install(FILES tclapConfig.cmake ${CMAKE_CURRENT_BINARY_DIR}/tclapConfigVersion.cmake DESTINATION lib/cmake/tclap)
 
 
